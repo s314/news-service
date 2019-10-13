@@ -1,0 +1,38 @@
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="scdhead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center text-light">
+      <div class="col-12">
+        <h1 class="font-weight-light">News feed</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="py-5">
+  <div class="container-fluid">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable(
+                <%= raw @data.prepend(['Category', 'Count']).to_json %>
+            );
+
+            var options = {
+                title: 'Распределение новостей по категориям'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <div class="card">
+      <div id="piechart" class="text-center" style="width: 1000px; height: 500px;"></div>
+    </div>
+  </div>
+</section>

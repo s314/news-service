@@ -1,0 +1,43 @@
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center text-light">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light">Сервиc категоризации новостей</h1>
+        <p class="lead">Исследуйте новостную ленту с тематической классификацией</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="card bg-dark text-white">
+          <img class="card-img" src="<%= url_to_image('landing_aggr.jpg') %>" alt="Card image">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Агрегатор</h5>
+            <p class="card-text">В данном разделе можно посмотреть актуальные новости. Также можно выбрать категории отображения</p>
+            <br />
+            <%= link_to "Перейти к новостям", news_path, class: "btn btn-outline-light" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card bg-dark text-white">
+          <img class="card-img" src="<%= url_to_image('landing_stat.jpg') %>" alt="Card image">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Статистика</h5>
+            <p class="card-text">В данном разделе можно посмотреть график распределения новостей по категориям.</p>
+            <br />
+            <%= link_to "Перейти к статистике", news_stats_path, class: "btn btn-outline-light" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
