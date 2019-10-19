@@ -34,6 +34,9 @@
               <%= link_to "Профиль", current_user, class: "nav-link" %>
             </li>
             <li>
+              <%= link_to "Параметры", edit_user_path(current_user), class: "nav-link" %>
+            </li>
+            <li>
               <%= link_to "Выйти", logout_path, method: "delete", class: "nav-link" %>
             </li>
           <% else %>
@@ -54,6 +57,8 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
+    <br />
+    <br />
     <%= yield %>
   </div>
   </body>

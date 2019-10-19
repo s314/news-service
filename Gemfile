@@ -73,3 +73,8 @@ gem 'bcrypt'
 gem 'ffi-rzmq'	# for ZMQ client on Rails side
 gem 'delayed_job_active_record' # longer calculations need to be run in background
 gem 'daemons' # for bin/delayed_job start
+
+# Faker
+gem 'bootstrap-will_paginate'
+gem 'faker'
+gem 'will_paginate'
