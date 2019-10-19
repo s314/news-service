@@ -29,6 +29,21 @@
           <li class="nav-item">
             <a class="nav-link" href="#">О нас</a>
           </li>
+          <% if logged_in? %>
+            <li>
+              <%= link_to "Профиль", current_user, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Выйти", logout_path, method: "delete", class: "nav-link" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Войти", login_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Регистрация", signup_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
