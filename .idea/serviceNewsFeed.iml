@@ -41,6 +41,7 @@
     <orderEntry type="library" scope="PROVIDED" name="archive-zip (v0.12.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v9.0.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="autoprefixer-rails (v9.6.1.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.13, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.4.5, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap (v4.1.3, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
@@ -63,9 +64,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.11.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi-rzmq (v2.0.7, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi-rzmq-core (v1.0.7, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="gchart (v1.0.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="hoe (v3.18.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.6.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.9.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
