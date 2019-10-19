@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'news/stats', action: 'stats', controller: 'news'
   get 'news/:category', action: 'index', controller: 'news'
   root to: 'home#index'
+
+  resources :users
 end

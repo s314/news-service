@@ -15,3 +15,15 @@
 
 @import "home";
 @import "news";
+@import "users";
+
+.centered {
+  text-align: center;
+  font-size: 0;
+}
+.centered > div {
+  float: none;
+  display: inline-block;
+  text-align: left;
+  font-size: 13px;
+}
