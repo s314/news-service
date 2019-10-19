@@ -66,6 +66,9 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'sprockets-rails'
 
+# Authentication
+gem 'bcrypt'
+
 # ZMQ
 gem 'ffi-rzmq'	# for ZMQ client on Rails side
 gem 'delayed_job_active_record' # longer calculations need to be run in background

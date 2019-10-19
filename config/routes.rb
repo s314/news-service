@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/new'
   get 'news', action: 'index', controller: 'news'
   get 'news/stats', action: 'stats', controller: 'news'
   get 'news/:category', action: 'index', controller: 'news'
