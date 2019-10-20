@@ -28,6 +28,12 @@
               <%= link_to "Сохраненные", read_later_entries_path, class: "nav-link" %>
             </li>
           <% end %>
+
+          <% if logged_in? and current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "Модерация", learning_entries_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to "Статистика", news_stats_path, class: "nav-link" %>
           </li>

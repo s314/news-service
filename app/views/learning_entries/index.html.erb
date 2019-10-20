@@ -1,0 +1,47 @@
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="scdhead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center text-light">
+      <div class="col-12">
+        <h1 class="font-weight-light">News feed</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="py-5">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-3 px-1">
+        <div class="py-4 sticky-top flex-grow-1">
+          <div class="nav nav-pills flex-sm-column">
+            <div class="nav-link d-none d-sm-inline">Навигация по категориям</div>
+            <%= link_to "Все категории", learning_entries_path, class: "nav-link" + (params[:category] == "all" || !params[:category].present? ? " active" : "") %>
+            <%= link_to "Бизнес", learning_entries_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
+            <%= link_to "Политика", learning_entries_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
+            <%= link_to "Спорт", learning_entries_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
+            <%= link_to "Технологии", learning_entries_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card columns -->
+      <div class="col" id="main">
+          <% @list.each do |entry| %>
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-success"><%= entry["category"] %></span></h5>
+                <p class="card-text"><%= entry["description"] %></p>
+                <%= button_to 'Remove', learning_entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+
+      <!-- Card columns -->
+
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+module LearningEntriesHelper
+end

@@ -43,9 +43,23 @@
                   <%= ff.hidden_field :title, value: entry['title'] %>
                   <%= ff.hidden_field :description, value: entry["description"] %>
                   <%= ff.hidden_field :image, value: entry["enclosure"] %>
-                  <%=  ff.hidden_field :date, value: DateTime.parse(entry["date"]) %>
+                  <%= ff.hidden_field :date, value: DateTime.parse(entry["date"]) %>
                   <%= ff.hidden_field :link, value: entry["link"] %>
                   <%= ff.submit "Прочитать позже", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+
+              <%= form_tag({ controller: 'learning_entries', action: 'create'}, method: 'post') do %>
+                <%= fields_for :learning_entry do |ff| %>
+                  <%= ff.hidden_field :title, value: entry['title'] %>
+                  <%= ff.hidden_field :description, value: entry["description"] %>
+                  <div class="form-inline">
+                    <%= ff.select :category, options_for_select([%w(Бизнес business),
+                                                                  %w(Спорт sport),
+                                                                  %w(Технологии technology),
+                                                                  %w(Политика politics)]), {}, {:class => 'form-control'} %>
+                    <%= ff.submit "Выбрать", class: "btn btn-primary" %>
+                  </div>
                 <% end %>
               <% end %>
             </div>
