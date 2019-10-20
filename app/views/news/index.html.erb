@@ -35,8 +35,19 @@
             <div class="card-body myBox">
               <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
               <p class="card-text"><%= entry["description"] %></p>
-              <p class="card-text"><small class="text-muted">Posted <%= entry["date"] %></small></p>
+              <p class="card-text"><small class="text-muted">Posted <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
               <%= link_to "Read more...", entry["link"], class: "stretched-link" %>
+
+              <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post') do %>
+                <%= fields_for :entry do |ff| %>
+                  <%= ff.hidden_field :title, value: entry['title'] %>
+                  <%= ff.hidden_field :description, value: entry["description"] %>
+                  <%= ff.hidden_field :image, value: entry["enclosure"] %>
+                  <%=  ff.hidden_field :date, value: DateTime.parse(entry["date"]) %>
+                  <%= ff.hidden_field :link, value: entry["link"] %>
+                  <%= ff.submit "Прочитать позже", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
         <% end %>
