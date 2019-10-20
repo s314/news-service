@@ -1,0 +1,2 @@
+class LearningEntry < ApplicationRecord
+end
