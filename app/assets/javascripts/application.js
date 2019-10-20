@@ -17,10 +17,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function() {
-    $(".myBox").click(function() {
-        window.location = $(this).find("a").attr("href");
-        return false;
-    });
-});

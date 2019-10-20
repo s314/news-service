@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'sessions/new'
   get 'users/new'
   get 'news', action: 'index', controller: 'news'
@@ -11,4 +12,6 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users
+
+  resources :read_later_entries, only: [:index, :create, :destroy]
 end

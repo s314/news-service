@@ -23,15 +23,21 @@
           <li class="nav-item">
             <%= link_to "Новости", news_path, class: "nav-link" %>
           </li>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= link_to "Сохраненные", read_later_entries_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to "Статистика", news_stats_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item border border-secondary border-left-0 border-top-0 border-bottom-0 pr-3 mr-3">
             <a class="nav-link" href="#">О нас</a>
           </li>
+
           <% if logged_in? %>
             <li>
-              <%= link_to "Профиль", current_user, class: "nav-link" %>
+              <%= link_to "Профиль (" + current_user.name + ")", current_user, class: "nav-link" %>
             </li>
             <li>
               <%= link_to "Параметры", edit_user_path(current_user), class: "nav-link" %>
