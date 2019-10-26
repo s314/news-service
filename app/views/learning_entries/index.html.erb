@@ -3,7 +3,7 @@
   <div class="container h-100">
     <div class="row h-100 align-items-center text-light">
       <div class="col-12">
-        <h1 class="font-weight-light">News feed</h1>
+        <h1 class="font-weight-light">Модерация обучающей выборки</h1>
       </div>
     </div>
   </div>
@@ -20,8 +20,15 @@
             <%= link_to "Все категории", learning_entries_path, class: "nav-link" + (params[:category] == "all" || !params[:category].present? ? " active" : "") %>
             <%= link_to "Бизнес", learning_entries_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
             <%= link_to "Политика", learning_entries_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
+            <%= link_to "Происшествия", learning_entries_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
             <%= link_to "Спорт", learning_entries_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
-            <%= link_to "Технологии", learning_entries_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+            <%= link_to "Наука и технологии", learning_entries_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+            <%= link_to "Культура", learning_entries_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
+          </div>
+        </div>
+        <div class="py-4 fixed-bottom flex-grow-1 fixed-bottom col-sm-3">
+          <div class="flex-sm-column">
+            <%= link_to "Переобучить классификатор", new_learning_entry_path, class: "btn btn-success btn-block" %>
           </div>
         </div>
       </div>

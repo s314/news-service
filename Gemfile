@@ -63,6 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap
 gem 'bootstrap'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'sprockets-rails'
 

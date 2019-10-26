@@ -12,6 +12,7 @@
  */
 
 @import "bootstrap";
+@import "font-awesome";
 
 @import "home";
 @import "news";
@@ -26,4 +27,8 @@
   display: inline-block;
   text-align: left;
   font-size: 13px;
+}
+
+body {
+  background: rgb(237,241,245);
 }

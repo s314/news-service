@@ -66,6 +66,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.11.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi-rzmq (v2.0.7, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi-rzmq-core (v1.0.7, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="font-awesome-rails (v4.7.0.5, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.6.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.0, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />

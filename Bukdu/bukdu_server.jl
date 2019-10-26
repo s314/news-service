@@ -24,8 +24,14 @@ function process_resource(c::WelcomeController)
     render(JSON, json)
 end
 
+function process_learn(c::WelcomeController)
+    re_learn()
+	render(JSON, "Success")
+end
+
 routes() do
     post("/resource/process", WelcomeController, process_resource)
+	post("/resource/relearn", WelcomeController, process_learn)
 end
 
 Bukdu.start(8080)

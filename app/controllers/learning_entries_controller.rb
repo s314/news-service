@@ -20,6 +20,15 @@ class LearningEntriesController < ApplicationController
     redirect_to learning_entries_path
   end
 
+  def new
+    http = Net::HTTP.new("127.0.0.1", "8080")
+    request = Net::HTTP::Post.new("http://127.0.0.1:8080/resource/relearn", 'Content-Type' => 'application/json')
+
+    response = http.request(request)
+
+    redirect_to learning_entries_path if response
+  end
+
   private
 
   def entry_params

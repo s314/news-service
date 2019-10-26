@@ -3,7 +3,7 @@
   <div class="container h-100">
     <div class="row h-100 align-items-center text-light">
       <div class="col-12">
-        <h1 class="font-weight-light">News feed</h1>
+        <h1 class="font-weight-light">Новостная лента</h1>
       </div>
     </div>
   </div>
@@ -20,8 +20,10 @@
           <%= link_to "Все категории", news_path, class: "nav-link" + (params[:category] == "all" || !params[:category].present? ? " active" : "") %>
           <%= link_to "Бизнес", news_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
           <%= link_to "Политика", news_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
+          <%= link_to "Происшествия", news_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
           <%= link_to "Спорт", news_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
-          <%= link_to "Технологии", news_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+          <%= link_to "Наука и технологии", news_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+          <%= link_to "Культура", news_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
         </div>
       </div>
     </div>
@@ -36,7 +38,7 @@
               <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
               <p class="card-text"><%= entry["description"] %></p>
               <p class="card-text"><small class="text-muted">Posted <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
-              <%= link_to "Read more...", entry["link"], class: "stretched-link" %>
+              <%= link_to "Читать далее...", entry["link"], class: "stretched-link mb-4" %>
 
               <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post') do %>
                 <%= fields_for :entry do |ff| %>
@@ -45,7 +47,9 @@
                   <%= ff.hidden_field :image, value: entry["enclosure"] %>
                   <%= ff.hidden_field :date, value: DateTime.parse(entry["date"]) %>
                   <%= ff.hidden_field :link, value: entry["link"] %>
-                  <%= ff.submit "Прочитать позже", class: "btn btn-primary" %>
+                  <%= ff.button type: "submit", class: "btn btn-primary", :data => {:toggle=>"tooltip"},
+                                'title' => "Добавить в \"Почитать позже\"",
+                                'data-placement' => 'top' do %><%= fa_icon("plus") %><% end %>
                 <% end %>
               <% end %>
 
@@ -56,9 +60,13 @@
                   <div class="form-inline">
                     <%= ff.select :category, options_for_select([%w(Бизнес business),
                                                                   %w(Спорт sport),
-                                                                  %w(Технологии technology),
-                                                                  %w(Политика politics)]), {}, {:class => 'form-control'} %>
-                    <%= ff.submit "Выбрать", class: "btn btn-primary" %>
+                                                                  %w(Наука\ и\ технологии technology),
+                                                                  %w(Политика politics),
+                                                                  %w(Происшествия criminal),
+                                                                  %w(Культура culture)]), {}, {:class => 'form-control'} %>
+                    <%= ff.button type: "submit", class: "btn btn-warning", :data => {:toggle=>"tooltip"},
+                                  'title' => "Сообщить о неверной классификации",
+                                  'data-placement' => 'top' do %><%= fa_icon("bug") %><% end %>
                   </div>
                 <% end %>
               <% end %>

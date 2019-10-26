@@ -34,11 +34,8 @@
               <%= link_to "Модерация", learning_entries_path, class: "nav-link" %>
             </li>
           <% end %>
-          <li class="nav-item">
-            <%= link_to "Статистика", news_stats_path, class: "nav-link" %>
-          </li>
           <li class="nav-item border border-secondary border-left-0 border-top-0 border-bottom-0 pr-3 mr-3">
-            <a class="nav-link" href="#">О нас</a>
+            <%= link_to "Статистика", news_stats_path, class: "nav-link" %>
           </li>
 
           <% if logged_in? %>
