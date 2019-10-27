@@ -1,8 +1,7 @@
 class LearningEntriesController < ApplicationController
   def create
     entry = LearningEntry.new(entry_params)
-    entry.save
-    redirect_to news_path
+    render json: { errors: @comment.errors }, status: :unprocessable_entity unless entry.save
   end
 
   def index

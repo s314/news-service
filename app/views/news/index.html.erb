@@ -40,20 +40,20 @@
               <p class="card-text"><small class="text-muted">Posted <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
               <%= link_to "Читать далее...", entry["link"], class: "stretched-link mb-4" %>
 
-              <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post') do %>
+              <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post', remote: true, format: 'json') do %>
                 <%= fields_for :entry do |ff| %>
                   <%= ff.hidden_field :title, value: entry['title'] %>
                   <%= ff.hidden_field :description, value: entry["description"] %>
                   <%= ff.hidden_field :image, value: entry["enclosure"] %>
                   <%= ff.hidden_field :date, value: DateTime.parse(entry["date"]) %>
                   <%= ff.hidden_field :link, value: entry["link"] %>
-                  <%= ff.button type: "submit", class: "btn btn-primary", :data => {:toggle=>"tooltip"},
+                  <%= ff.button type: "submit", class: "btn btn-primary rl_submit", :data => {:toggle=>"tooltip"},
                                 'title' => "Добавить в \"Почитать позже\"",
                                 'data-placement' => 'top' do %><%= fa_icon("plus") %><% end %>
                 <% end %>
               <% end %>
 
-              <%= form_tag({ controller: 'learning_entries', action: 'create'}, method: 'post') do %>
+              <%= form_tag({ controller: 'learning_entries', action: 'create'}, method: 'post', remote: true, format: 'json') do %>
                 <%= fields_for :learning_entry do |ff| %>
                   <%= ff.hidden_field :title, value: entry['title'] %>
                   <%= ff.hidden_field :description, value: entry["description"] %>
@@ -64,7 +64,7 @@
                                                                   %w(Политика politics),
                                                                   %w(Происшествия criminal),
                                                                   %w(Культура culture)]), {}, {:class => 'form-control'} %>
-                    <%= ff.button type: "submit", class: "btn btn-warning", :data => {:toggle=>"tooltip"},
+                    <%= ff.button type: "submit", class: "btn btn-warning ln_submit", :data => {:toggle=>"tooltip"},
                                   'title' => "Сообщить о неверной классификации",
                                   'data-placement' => 'top' do %><%= fa_icon("bug") %><% end %>
                   </div>

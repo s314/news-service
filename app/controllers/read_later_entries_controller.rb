@@ -4,8 +4,8 @@ class ReadLaterEntriesController < ApplicationController
   def create
     user = current_user
     entry = user.read_later_entries.new(entry_params)
-    entry.save
-    redirect_to read_later_entries_path
+
+    render json: { errors: @comment.errors }, status: :unprocessable_entity unless entry.save
   end
 
   def index
