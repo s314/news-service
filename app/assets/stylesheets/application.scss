@@ -49,3 +49,12 @@ button > * {
 .report-show:hover > small > a {
   border-bottom: 1px #888888 dotted;
 }
+
+.report-confirm > * {
+  cursor: pointer !important;
+  pointer-events: none;
+}
+
+.report-confirm > small > a {
+  color: #556B2F !important;
+}

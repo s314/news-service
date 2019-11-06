@@ -36,7 +36,11 @@ ready = ->
         $(buttonln)
           .tooltip('hide')
           .parent().empty()
-          .parent().html("Уведомлено");
+          .parent().parent()
+            .addClass("report-confirm")
+            .html(
+              "<small><a href=\"#\" class=\"stretched-link align-bottom\"><i class=\"fa fa-check\"></i> Отправлено на модерацию</a></small>"
+            );
 
   jQuery ->
   # Show moderate form
