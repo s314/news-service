@@ -36,3 +36,16 @@ body {
 button > * {
   pointer-events: none;
 }
+
+.report-show > * {
+  cursor: pointer !important;
+  pointer-events: none;
+}
+
+.report-show > small > a {
+  color: #888888 !important;
+}
+
+.report-show:hover > small > a {
+  border-bottom: 1px #888888 dotted;
+}

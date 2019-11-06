@@ -29,7 +29,7 @@
     </div>
 
   <!-- Card columns -->
-    <div class="col" id="main">
+    <div class="col-9" id="main">
       <div class="card-columns">
         <% @news.each do |entry| %>
           <div class="card">
@@ -37,10 +37,34 @@
             <div class="card-body myBox">
               <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
               <p class="card-text"><%= entry["description"] %></p>
-              <p class="card-text"><small class="text-muted">Posted <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
-              <%= link_to "Читать далее...", entry["link"], class: "stretched-link mb-4" %>
+              <p class="card-text"><small class="text-muted">Опубликовано <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
+              <%= link_to "Читать далее...", entry["link"], target:'_blank', class: "stretched-link mb-4" %>
 
-              <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post', remote: true, format: 'json') do %>
+              <br />
+              <br />
+
+              <div class="report-show d-inline"><small>
+                <%= link_to "Категория неверно определена?", entry["link"], class: "stretched-link align-bottom" %></small>
+                <%= form_tag({ controller: 'learning_entries', action: 'create'}, method: 'post', remote: true, format: 'json', class: "form-inline pull-left d-none") do %>
+                  <%= fields_for :learning_entry do |ff| %>
+                    <%= ff.hidden_field :title, value: entry['title'] %>
+                    <%= ff.hidden_field :description, value: entry["description"] %>
+                    <div class="form-inline">
+                      <%= ff.select :category, options_for_select([%w(Бизнес business),
+                                                                    %w(Спорт sport),
+                                                                    %w(Наука\ и\ технологии technology),
+                                                                    %w(Политика politics),
+                                                                    %w(Происшествия criminal),
+                                                                    %w(Культура culture)]), {}, {:class => 'form-control'} %>
+                      <%= ff.button type: "submit", class: "btn btn-warning ln_submit", :data => {:toggle=>"tooltip"},
+                                    'title' => "Сообщить о неверной классификации",
+                                    'data-placement' => 'top' do %><%= fa_icon("bug") %><% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <%= form_tag({ controller: 'read_later_entries', action: 'create'}, method: 'post', remote: true, format: 'json', class: "form-inline pull-right mb-4") do %>
                 <%= fields_for :entry do |ff| %>
                   <%= ff.hidden_field :title, value: entry['title'] %>
                   <%= ff.hidden_field :description, value: entry["description"] %>
@@ -53,23 +77,6 @@
                 <% end %>
               <% end %>
 
-              <%= form_tag({ controller: 'learning_entries', action: 'create'}, method: 'post', remote: true, format: 'json') do %>
-                <%= fields_for :learning_entry do |ff| %>
-                  <%= ff.hidden_field :title, value: entry['title'] %>
-                  <%= ff.hidden_field :description, value: entry["description"] %>
-                  <div class="form-inline">
-                    <%= ff.select :category, options_for_select([%w(Бизнес business),
-                                                                  %w(Спорт sport),
-                                                                  %w(Наука\ и\ технологии technology),
-                                                                  %w(Политика politics),
-                                                                  %w(Происшествия criminal),
-                                                                  %w(Культура culture)]), {}, {:class => 'form-control'} %>
-                    <%= ff.button type: "submit", class: "btn btn-warning ln_submit", :data => {:toggle=>"tooltip"},
-                                  'title' => "Сообщить о неверной классификации",
-                                  'data-placement' => 'top' do %><%= fa_icon("bug") %><% end %>
-                  </div>
-                <% end %>
-              <% end %>
             </div>
           </div>
         <% end %>
