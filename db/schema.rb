@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_091405) do
+ActiveRecord::Schema.define(version: 2019_11_06_141125) do
 
   create_table "learning_entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 2019_10_20_091405) do
     t.datetime "updated_at", null: false
     t.string "link"
     t.index ["user_id"], name: "index_read_later_entries_on_user_id"
+  end
+
+  create_table "sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

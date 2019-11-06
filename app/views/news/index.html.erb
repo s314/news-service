@@ -33,7 +33,7 @@
       <div class="card-columns">
         <% @news.each do |entry| %>
           <div class="card">
-            <img class="card-img" src="<%= entry["enclosure"] %>" alt="Card image">
+            <% unless entry["enclosure"].nil? %><img class="card-img" src="<%= entry["enclosure"] %>" alt="Card image"><% end %>
             <div class="card-body myBox">
               <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
               <p class="card-text"><%= entry["description"] %></p>

@@ -1,0 +1,39 @@
+<header class="scdhead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center text-light">
+      <div class="col-12">
+        <h1 class="font-weight-light">Источники новостей</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-4">
+
+  <% if notice.present? %><div class="alert alert-info mt-4"><%= notice %></div><% end %>
+  <% if alert.present? %><div class="alert alert-warning mt-4"><%= alert %></div><% end %>
+
+  <%= link_to "Добавить новый", new_source_path, class: "btn btn-success btn-small" %>
+
+  <table class="table mt-2">
+    <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Адрес</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @sources.each do |source| %>
+      <tr>
+        <td><%= source.title %></td>
+        <td><%= source.address %></td>
+        <td><%= button_to 'Редактировать', edit_source_path(source), method: :get, class: "btn btn-primary btn-small" %></td>
+        <td><%= button_to 'Удалить', source_path(source), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить данный источник?' }, class: "btn btn-danger btn-small" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

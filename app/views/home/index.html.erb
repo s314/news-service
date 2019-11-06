@@ -18,10 +18,12 @@
         <div class="card bg-dark text-white">
           <img class="card-img" src="<%= url_to_image('landing_aggr.jpg') %>" alt="Card image">
           <div class="card-img-overlay">
-            <h5 class="card-title">Агрегатор</h5>
-            <p class="card-text">В данном разделе можно посмотреть актуальные новости. Также можно выбрать категории отображения</p>
-            <br />
-            <%= link_to "Перейти к новостям", news_path, class: "btn btn-outline-light" %>
+            <div class="jumbotron jumbotron-fluid px-3 py-5 special-card">
+              <h5 class="card-title">Агрегатор</h5>
+              <p class="card-text">В данном разделе можно посмотреть актуальные новости. Также можно выбрать категории
+                отображения</p>
+              <br/>
+              <%= link_to "Перейти к новостям", news_path, class: "btn btn-outline-light" %></div>
           </div>
         </div>
       </div>
@@ -30,10 +32,11 @@
         <div class="card bg-dark text-white">
           <img class="card-img" src="<%= url_to_image('landing_stat.jpg') %>" alt="Card image">
           <div class="card-img-overlay">
-            <h5 class="card-title">Статистика</h5>
-            <p class="card-text">В данном разделе можно посмотреть график распределения новостей по категориям.</p>
-            <br />
-            <%= link_to "Перейти к статистике", news_stats_path, class: "btn btn-outline-light" %>
+            <div class="jumbotron jumbotron-fluid px-3 py-5 special-card">
+              <h5 class="card-title">Статистика</h5>
+              <p class="card-text">В данном разделе можно посмотреть график распределения новостей по категориям.</p>
+              <br/>
+              <%= link_to "Перейти к статистике", news_stats_path, class: "btn btn-outline-light" %></div>
           </div>
         </div>
       </div>

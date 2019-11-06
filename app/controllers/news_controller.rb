@@ -28,12 +28,9 @@ class NewsController < ApplicationController
     require 'rss'
     require 'open-uri'
 
-    rss_feeds = %w(
-        https://meduza.io/rss/all
-        https://lenta.ru/rss/news
-        https://www.vesti.ru/vesti.rss
-        https://www.popmech.ru/out/public-all.xml
-    )
+    rss_sources = Source.all
+
+    rss_feeds = rss_sources.collect { |row| row.address }
 
     rss_results = []
 
@@ -42,7 +39,16 @@ class NewsController < ApplicationController
       # rss = RSS::Parser.parse(open('http://feeds.feedburner.com/CoinDesk?format=xml').read, false).items[0..5]
 
       rss.each do |result|
-        result = { title: result.title, date: result.pubDate, link: result.link, description: result.description, enclosure: result.enclosure.url }
+        result = {
+            title: result.title,
+            date: result.pubDate,
+            link: result.link,
+            description: ActionView::Base.full_sanitizer.sanitize(result.description),
+            enclosure: (
+              result.enclosure.url unless result.enclosure.nil? or
+                  (result.enclosure.type != "image/jpeg" and result.enclosure.type != "image/png")
+            )
+        }
         rss_results.push(result)
       end
     end
