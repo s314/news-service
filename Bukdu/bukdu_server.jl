@@ -12,19 +12,19 @@ function process_resource(c::WelcomeController)
     # Посмотрим в цикле все новости в формате RSS
     for dict in json["dict"]
 	classes = predict_classes(dict["title"] * " " * dict["description"])
-	@show dict["title"], " ", classes
+
 	# Найдем категорию с наибольшим значением
 	prior_class = findmax(classes)
+
 	# Впишем категорию в новость
 	dict["class"] = last(prior_class)
     end
-
-    @show json
 
     render(JSON, json)
 end
 
 function process_learn(c::WelcomeController)
+	# Переобучаем классификатор
     re_learn()
 	render(JSON, "Success")
 end

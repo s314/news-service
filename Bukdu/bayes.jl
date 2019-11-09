@@ -4,9 +4,7 @@ export NaiveBayesClassifier
 
 stemmer_rus = Stemmer("russian")
 
-"""
-Process string with russian stemmer and strip all unnecessary symbols
-"""
+# Обработка строк стеммером для русского языка и удаление всех лишних символов
 function simpleTokenise(s)
     s_doc = StringDocument(s)
     prepare!(s_doc, strip_punctuation|strip_numbers|strip_whitespace)
@@ -14,9 +12,8 @@ function simpleTokenise(s)
     WordTokenizers.tokenize(lowercase(replace(s, "."=>"")))
 end
 
-"""
-Create a dict that maps elements in input array to their frequencies.
-"""
+
+# Создание словаря соответствия входных элементов их частоте
 function frequencies(xs)
     frequencies = Dict{eltype(xs),Int}()
     for x in xs
