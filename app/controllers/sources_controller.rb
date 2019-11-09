@@ -1,4 +1,7 @@
 class SourcesController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user
+
   def index
     @sources = Source.paginate(page: params[:page])
   end

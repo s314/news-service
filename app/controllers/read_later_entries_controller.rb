@@ -1,5 +1,5 @@
 class ReadLaterEntriesController < ApplicationController
-  before_action :logged_in?
+  before_action :logged_in_user
 
   def create
     user = current_user

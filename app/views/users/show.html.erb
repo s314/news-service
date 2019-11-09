@@ -1,1 +1,44 @@
-<%= @user.name %>, <%= @user.email %>
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="scdhead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center text-light">
+      <div class="col-12">
+        <h1 class="font-weight-light"><%= @user.name %></h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-4">
+  <table class="table mt-2">
+    <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Имя пользователя</td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Количество сохраненных записей</td>
+      <td><%= @user.read_later_entries.count %></td>
+    </tr>
+    <tr>
+      <td>Времени с момента регистрации</td>
+      <td><%= distance_of_time_in_words_to_now @user.created_at %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <% if @user == current_user %>
+    <%= link_to "Редактировать профиль", edit_user_path(current_user), class: "btn btn-primary btn-small mt-4" %>
+  <% end %>
+</div>
+

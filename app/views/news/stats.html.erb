@@ -20,6 +20,7 @@
     <% else %>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
+
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
 
@@ -38,9 +39,54 @@
               chart.draw(data, options);
           }
       </script>
-      <div class="col-md-6 mx-auto">
-        <div class="card">
-          <div id="piechart" class="text-center" style="width: 800px; height: 500px;"></div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Количество пользователей</h5>
+              <h6 class="text-center text-secondary">Зарегистрировано</h6>
+              <h1 class="text-primary text-center my-4"><%= @stats[:users] %></h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Источников новостей</h5>
+              <h6 class="text-center text-secondary">В базе данных</h6>
+              <h1 class="text-primary text-center my-4"><%= @stats[:sources] %></h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Количество новостей</h5>
+              <h6 class="text-center text-secondary">Из источников</h6>
+              <h1 class="text-primary text-center my-4"><%= @stats[:news] %></h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Записей в обучающей выборке</h5>
+              <h6 class="text-center text-secondary">Для категоризации</h6>
+              <h1 class="text-primary text-center my-4"><%= @stats[:learning] %></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div id="piechart" class="text-center" style="width: 800px; height: 500px;"></div>
+          </div>
         </div>
       </div>
     <% end %>

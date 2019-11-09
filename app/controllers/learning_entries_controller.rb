@@ -1,4 +1,7 @@
 class LearningEntriesController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user,     only: [:index, :destroy, :new]
+
   def create
     entry = LearningEntry.new(entry_params)
     render json: { errors: @comment.errors }, status: :unprocessable_entity unless entry.save

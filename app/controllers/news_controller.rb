@@ -19,7 +19,12 @@ class NewsController < ApplicationController
     end
 
     @data = @counts.map { |key, value| [t("#{key.to_s}"), value] }
-
+    @stats = {
+        users: User.all.count,
+        sources: Source.all.count,
+        news: news.count,
+        learning: LearningEntry.all.count
+    }
   end
 
   private

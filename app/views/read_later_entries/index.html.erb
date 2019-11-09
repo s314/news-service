@@ -16,7 +16,10 @@
       <div class="col-sm-3 px-1">
         <div class="py-4 sticky-top flex-grow-1">
           <div class="nav nav-pills flex-sm-column">
-            <div class="nav-link d-none d-sm-inline">Навигация по категориям</div>
+            <div class="nav-link d-none d-sm-inline text-center">
+              <h5 class="mt-4 pt-4">Здесь может быть ваша реклама</h5>
+              <div class="text-secondary">Обратитесь к нам для уточнения деталей</div>
+            </div>
           </div>
         </div>
       </div>
@@ -30,9 +33,13 @@
               <div class="card-body myBox">
                 <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
                 <p class="card-text"><%= entry["description"] %></p>
-                <p class="card-text"><small class="text-muted">Posted <%= entry["date"] %></small></p>
-                <%= link_to "Read more...", entry["link"], class: "stretched-link" %>
-                <%= button_to 'Remove', read_later_entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" %>
+                <p class="card-text"><small class="text-muted">Опубликовано <%= entry["date"].to_formatted_s(:db) %></small></p>
+                <%= link_to "Читать далее...", entry["link"], target:'_blank', class: "stretched-link mb-4" %>
+                <%= button_to read_later_entry_path(entry), method: :delete,
+                              :data => {:toggle=>"tooltip", :confirm => 'Вы уверены?'},
+                              'title' => "Удалить из \"Почитать позже\"",
+                              'data-placement' => 'top',
+                              class: "btn btn-danger btn-small pull-right my-4" do %><%= fa_icon("trash") %><% end %>
               </div>
             </div>
           <% end %>
