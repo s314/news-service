@@ -7,9 +7,9 @@ class LearningEntriesController < ApplicationController
   def index
     redirect_to(root_url) unless current_user.admin?
     if params[:category].blank?
-      @list = LearningEntry.all
+      @list = LearningEntry.paginate(page: params[:page])
     else
-      @list = LearningEntry.where(category: params[:category])
+      @list = LearningEntry.where(category: params[:category]).paginate(page: params[:page])
     end
   end
 

@@ -1,6 +1,6 @@
 class SourcesController < ApplicationController
   def index
-    @sources = Source.all
+    @sources = Source.paginate(page: params[:page])
   end
 
   def new

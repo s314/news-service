@@ -38,6 +38,8 @@
           <% end %>
         </div>
 
+        <%= will_paginate(@list, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, :previous_label => '&laquo;', :next_label => '&raquo;', :class => "pagination justify-content-center") %>
+
       </div>
 
       <!-- Card columns -->
