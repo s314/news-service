@@ -18,7 +18,7 @@ class NewsController < ApplicationController
       end
     end
 
-    @data = @counts.map { |key, value| [key.to_s.capitalize, value] }
+    @data = @counts.map { |key, value| [t("#{key.to_s}"), value] }
 
   end
 

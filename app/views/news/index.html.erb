@@ -18,12 +18,12 @@
         <div class="nav nav-pills flex-sm-column">
           <div class="nav-link d-none d-sm-inline">Навигация по категориям</div>
           <%= link_to "Все категории", news_path, class: "nav-link" + (params[:category] == "all" || !params[:category].present? ? " active" : "") %>
-          <%= link_to "Бизнес", news_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
-          <%= link_to "Политика", news_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
-          <%= link_to "Происшествия", news_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
-          <%= link_to "Спорт", news_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
-          <%= link_to "Наука и технологии", news_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
-          <%= link_to "Культура", news_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
+          <%= link_to t("business"), news_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
+          <%= link_to t("politics"), news_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
+          <%= link_to t("criminal"), news_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
+          <%= link_to t("sport"), news_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
+          <%= link_to t("technology"), news_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+          <%= link_to t("culture"), news_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
           <div class="card">
             <% unless entry["enclosure"].nil? %><img class="card-img" src="<%= entry["enclosure"] %>" alt="Card image"><% end %>
             <div class="card-body myBox">
-              <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= entry["class"] %></span></h5>
+              <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-secondary"><%= t("#{entry["class"]}") %></span></h5>
               <p class="card-text"><%= entry["description"] %></p>
               <p class="card-text"><small class="text-muted">Опубликовано <%= DateTime.parse(entry["date"]).to_formatted_s(:db) %></small></p>
               <%= link_to "Читать далее...", entry["link"], target:'_blank', class: "stretched-link mb-4" %>

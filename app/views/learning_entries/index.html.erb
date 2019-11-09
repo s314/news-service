@@ -21,12 +21,12 @@
           <div class="nav nav-pills flex-sm-column">
             <div class="nav-link d-none d-sm-inline">Навигация по категориям</div>
             <%= link_to "Все категории", learning_entries_path, class: "nav-link" + (params[:category] == "all" || !params[:category].present? ? " active" : "") %>
-            <%= link_to "Бизнес", learning_entries_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
-            <%= link_to "Политика", learning_entries_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
-            <%= link_to "Происшествия", learning_entries_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
-            <%= link_to "Спорт", learning_entries_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
-            <%= link_to "Наука и технологии", learning_entries_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
-            <%= link_to "Культура", learning_entries_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
+            <%= link_to t("business"), learning_entries_path(category: "business"), class: "nav-link" + (params[:category] == "business" ? " active" : "") %>
+            <%= link_to t("politics"), learning_entries_path(category: "politics"), class: "nav-link" + (params[:category] == "politics" ? " active" : "") %>
+            <%= link_to t("criminal"), learning_entries_path(category: "criminal"), class: "nav-link" + (params[:category] == "criminal" ? " active" : "") %>
+            <%= link_to t("sport"), learning_entries_path(category: "sport"), class: "nav-link" + (params[:category] == "sport" ? " active" : "") %>
+            <%= link_to t("technology"), learning_entries_path(category: "technology"), class: "nav-link" + (params[:category] == "technology" ? " active" : "") %>
+            <%= link_to t("culture"), learning_entries_path(category: "culture"), class: "nav-link" + (params[:category] == "culture" ? " active" : "") %>
           </div>
         </div>
         <div class="py-4 fixed-bottom flex-grow-1 fixed-bottom col-sm-3">
@@ -41,9 +41,9 @@
           <% @list.each do |entry| %>
             <div class="card mb-2">
               <div class="card-body">
-                <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-success"><%= entry["category"] %></span></h5>
+                <h5 class="card-title"><%= entry["title"] %> <span class="badge badge-success"><%= t("#{entry["category"]}") %></span></h5>
                 <p class="card-text"><%= entry["description"] %></p>
-                <%= button_to 'Remove', learning_entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" %>
+                <%= button_to 'Удалить', learning_entry_path(entry), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить это из обучающей выборки?' }, class: "btn btn-danger btn-small" %>
               </div>
             </div>
           <% end %>
