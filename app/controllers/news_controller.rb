@@ -58,13 +58,16 @@ class NewsController < ApplicationController
     request = Net::HTTP::Post.new("http://127.0.0.1:8080/resource/process", 'Content-Type' => 'application/json')
     request.body = { dict: rss_results }.to_json
 
-    response = http.request(request)
+    begin
+      response = http.request(request)
 
-    rss_analyzed = JSON.parse(response.body)
+      rss_analyzed = JSON.parse(response.body)
 
-    return rss_analyzed["dict"] if category == "all" || category.nil?
-
-    rss_analyzed["dict"].select { |hash| hash["class"] == category }
+      return rss_analyzed["dict"] if category == "all" || category.nil?
+      rss_analyzed["dict"].select { |hash| hash["class"] == category }
+    rescue
+      return Array(nil)
+    end
 
   end
 

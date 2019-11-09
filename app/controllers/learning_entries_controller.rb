@@ -6,7 +6,7 @@ class LearningEntriesController < ApplicationController
 
   def index
     redirect_to(root_url) unless current_user.admin?
-    unless params[:category].present?
+    if params[:category].blank?
       @list = LearningEntry.all
     else
       @list = LearningEntry.where(category: params[:category])
@@ -23,9 +23,14 @@ class LearningEntriesController < ApplicationController
     http = Net::HTTP.new("127.0.0.1", "8080")
     request = Net::HTTP::Post.new("http://127.0.0.1:8080/resource/relearn", 'Content-Type' => 'application/json')
 
-    response = http.request(request)
+    begin
+      response = http.request(request)
+      flash[:notice] = "Классификатор был успешно переобучен" if response
+    rescue
+      flash[:alert] = "Произошла ошибка при переобучении классификатора"
+    end
 
-    redirect_to learning_entries_path if response
+    redirect_to learning_entries_path
   end
 
   private

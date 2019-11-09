@@ -30,6 +30,15 @@
 
   <!-- Card columns -->
     <div class="col-9" id="main">
+
+      <% if @news.empty? %>
+        <div class="error-template">
+          <h1 class="text-primary">Ой-ой!</h1>
+          <h3>Не получается сформировать ленту новостей</h3>
+          Сообщите об этом нам и попробуйте через некоторое время
+        </div>
+      <% end %>
+
       <div class="card-columns">
         <% @news.each do |entry| %>
           <div class="card">

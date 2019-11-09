@@ -11,30 +11,38 @@
 
 <section class="py-5">
   <div class="container-fluid">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-
-            var data = google.visualization.arrayToDataTable(
-                <%= raw @data.prepend(['Category', 'Count']).to_json %>
-            );
-
-            var options = {
-                title: 'Распределение новостей по категориям'
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-            chart.draw(data, options);
-        }
-    </script>
-    <div class="col-md-6 mx-auto">
-      <div class="card">
-        <div id="piechart" class="text-center" style="width: 800px; height: 500px;"></div>
+    <% if @data.empty? %>
+      <div class="error-template">
+        <h1 class="text-primary">Ой-ой!</h1>
+        <h3>Не получается получить статистику для аналитики</h3>
+        Сообщите об этом нам и попробуйте через некоторое время
       </div>
-    </div>
+    <% else %>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+
+              var data = google.visualization.arrayToDataTable(
+                  <%= raw @data.prepend(['Category', 'Count']).to_json %>
+              );
+
+              var options = {
+                  title: 'Распределение новостей по категориям'
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+              chart.draw(data, options);
+          }
+      </script>
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div id="piechart" class="text-center" style="width: 800px; height: 500px;"></div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
