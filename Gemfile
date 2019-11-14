@@ -82,3 +82,6 @@ gem 'will_paginate'
 
 # PostgreSQL
 gem 'pg'
+
+# Testing
+gem 'rails-controller-testing'

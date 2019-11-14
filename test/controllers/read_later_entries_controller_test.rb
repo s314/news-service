@@ -1,18 +1,21 @@
 require 'test_helper'
 
 class ReadLaterEntriesControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get read_later_entries_new_url
-    assert_response :success
+  fixtures :users
+
+  def setup
+    @user       = users(:michael)
+    @other_user = users(:archer)
   end
 
-  test "should get index" do
-    get read_later_entries_index_url
-    assert_response :success
+  test "read later should redirected to login" do
+    get read_later_entries_path
+    assert_redirected_to "/login"
   end
 
-  test "should get destroy" do
-    get read_later_entries_destroy_url
+  test "should enter to read later" do
+    log_in_as(@user, remember_me: '1')
+    get read_later_entries_path
     assert_response :success
   end
 
