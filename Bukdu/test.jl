@@ -47,3 +47,6 @@ function predict_classes(pstring)
 	res = predict(m, pstring)
 	return res
 end
+
+
+conn = LibPQ.Connection("dbname=postgres user=s314 password=qwerty host=localhost")

@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_11_06_141125) do
 
-  create_table "learning_entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "learning_entries", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "category"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_141125) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "read_later_entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "read_later_entries", force: :cascade do |t|
     t.string "title"
     t.datetime "date"
     t.text "description"
@@ -32,14 +35,14 @@ ActiveRecord::Schema.define(version: 2019_11_06_141125) do
     t.index ["user_id"], name: "index_read_later_entries_on_user_id"
   end
 
-  create_table "sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "sources", force: :cascade do |t|
     t.string "title"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false

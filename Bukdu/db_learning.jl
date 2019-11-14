@@ -1,4 +1,5 @@
-using MySQL
+using LibPQ
+using Tables
 using DataFrames
 
 using TextAnalysis
@@ -23,21 +24,14 @@ function re_learn()
 	"""
 	Конфигурация БД
 	"""
-	conn = MySQL.connect(
-		"localhost",
-		"root",
-		"",
-		db = "serviceNewsFeed_development",
-		unix_socket = "/var/run/mysqld/mysqld.sock",
-		opts=Dict(MySQL.API.MYSQL_SET_CHARSET_NAME=>"utf8")
-		)
+	conn = LibPQ.Connection("dbname=serviceNewsFeed_development user=s314 password=qwerty host=localhost")
 
 	"""
 	Получаем корпус текстов для всех категорий
 	"""
 	for category in categories
 	@show category
-		dc_query = MySQL.Query(conn, """SELECT * FROM learning_entries WHERE category = '$(string(category))';""") |> DataFrame
+		dc_query = execute(conn, """SELECT * FROM learning_entries WHERE category = '$(string(category))';""") |> DataFrame
 		for r in eachrow(dc_query)
 			a = r.title * ' ' * r.description
 
@@ -48,8 +42,8 @@ function re_learn()
 	"""
 	Отключаемся от БД
 	"""
-	MySQL.disconnect(conn)
-	println("Learning successfully ended!")
+	close(conn)
+	@show ("Learning successfully ended!")
 end
 
 # Первоначальное обучение классификатора при запуске

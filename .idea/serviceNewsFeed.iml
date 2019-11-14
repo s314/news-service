@@ -85,6 +85,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.5.2, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.2, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.10.4, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.1.4, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="popper_js (v1.14.5, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v3.12.1, RVM: ruby-2.3.1 [serviceNewsFeed]) [gem]" level="application" />

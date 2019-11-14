@@ -79,3 +79,6 @@ gem 'daemons' # for bin/delayed_job start
 gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'will_paginate'
+
+# PostgreSQL
+gem 'pg'

@@ -20,6 +20,8 @@ function process_resource(c::WelcomeController)
 	dict["class"] = last(prior_class)
     end
 
+	@show json
+
     render(JSON, json)
 end
 
