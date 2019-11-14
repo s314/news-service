@@ -26,7 +26,6 @@ function process_resource(c::WelcomeController)
 end
 
 function process_learn(c::WelcomeController)
-	# Переобучаем классификатор
     re_learn()
 	render(JSON, "Success")
 end

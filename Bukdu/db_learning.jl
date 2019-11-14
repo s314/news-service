@@ -9,14 +9,24 @@ include("bayes.jl")
 m = NaiveBayesClassifier([:technology, :business, :politics, :sport, :culture, :criminal])
 
 
-# Функция для определения классов
+
+"""
+    predict_classes(pstring)
+
+Функция для определения классов
+"""
 function predict_classes(pstring)
 	res = predict(m, pstring)
 	return res
 end
 
 
-# Процедура для переобучения классификатора
+
+"""
+    re_learn()
+
+Процедура для переобучения классификатора
+"""
 function re_learn()
     categories = [:technology, :business, :politics, :sport, :culture, :criminal]
 	global m = NaiveBayesClassifier(categories)
@@ -46,5 +56,4 @@ function re_learn()
 	@show ("Learning successfully ended!")
 end
 
-# Первоначальное обучение классификатора при запуске
-re_learn()
+re_learn() # Первоначальное обучение классификатора при запуске

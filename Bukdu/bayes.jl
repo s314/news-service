@@ -4,7 +4,10 @@ export NaiveBayesClassifier
 
 stemmer_rus = Stemmer("russian")
 
-# Обработка строк стеммером для русского языка и удаление всех лишних символов
+"""
+	simpleTokenise(s)
+Обработка строк стеммером для русского языка и удаление всех лишних символов
+"""
 function simpleTokenise(s)
     s_doc = StringDocument(s)
     prepare!(s_doc, strip_punctuation|strip_numbers|strip_whitespace)
@@ -13,7 +16,10 @@ function simpleTokenise(s)
 end
 
 
-# Создание словаря соответствия входных элементов их частоте
+"""
+	frequencies(xs)
+Создание частотного словаря входных элементов
+"""
 function frequencies(xs)
     frequencies = Dict{eltype(xs),Int}()
     for x in xs
