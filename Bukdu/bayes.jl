@@ -10,7 +10,7 @@ stemmer_rus = Stemmer("russian")
 """
 function simpleTokenise(s)
     s_doc = StringDocument(s)
-    prepare!(s_doc, strip_punctuation|strip_numbers|strip_whitespace)
+    prepare!(s_doc, strip_punctuation|strip_numbers|strip_whitespace|strip_stopwords)
     s = stem(stemmer_rus, s_doc.text)
     WordTokenizers.tokenize(lowercase(replace(s, "."=>"")))
 end

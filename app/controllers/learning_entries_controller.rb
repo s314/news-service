@@ -1,3 +1,5 @@
+require 'csv'
+
 class LearningEntriesController < ApplicationController
   before_action :logged_in_user
   before_action :admin_user,     only: [:index, :destroy, :new]
@@ -5,6 +7,19 @@ class LearningEntriesController < ApplicationController
   def create
     entry = LearningEntry.new(entry_params)
     render json: { errors: @comment.errors }, status: :unprocessable_entity unless entry.save
+  end
+
+  def download
+    entries = LearningEntry.all
+
+    csv = CSV.generate do |csv|
+      entries.each do |row|
+        a = row.as_json.map { |k, v| v}
+        csv << a
+      end
+    end
+
+    send_data csv, :type=> 'text/csv'
   end
 
   def index

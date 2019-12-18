@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # Entries
   resources :read_later_entries, only: [:index, :create, :destroy]
   resources :learning_entries, only: [:index, :create, :destroy, :new]
+  get 'learning_entries/download', action: 'download', controller: 'learning_entries'
 
   # Sources
   resources :sources

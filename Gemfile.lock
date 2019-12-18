@@ -93,6 +93,7 @@ GEM
     execjs (2.7.0)
     faker (2.6.0)
       i18n (>= 1.6, < 1.8)
+    fastercsv (1.5.5)
     ffi (1.11.1)
     ffi-rzmq (2.0.7)
       ffi-rzmq-core (>= 1.0.7)
@@ -237,6 +238,7 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   faker
+  fastercsv
   ffi-rzmq
   font-awesome-rails
   jbuilder (~> 2.5)

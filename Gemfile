@@ -85,3 +85,4 @@ gem 'pg'
 
 # Testing
 gem 'rails-controller-testing'
+gem 'fastercsv'
